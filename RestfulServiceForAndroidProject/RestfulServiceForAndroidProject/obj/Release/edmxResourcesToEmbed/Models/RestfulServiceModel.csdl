@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MC_ProjectAssignerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cours">
+    <Key>
+      <PropertyRef Name="CID" />
+    </Key>
+    <Property Name="CID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Student_Course" Relationship="Self.FK_Student_Course_Courses" FromRole="Courses" ToRole="Student_Course" />
+    <NavigationProperty Name="Teacher_Course" Relationship="Self.FK_Teacher_Course_Courses" FromRole="Courses" ToRole="Teacher_Course" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="GID" />
+    </Key>
+    <Property Name="GID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Project_Group" Relationship="Self.FK_Project_Group_Groups" FromRole="Groups" ToRole="Project_Group" />
+    <NavigationProperty Name="Student_Group" Relationship="Self.FK_Student_Group_Groups" FromRole="Groups" ToRole="Student_Group" />
+  </EntityType>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="NID" />
+    </Key>
+    <Property Name="NID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NMessage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NSenderID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NReceiverID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NReceiverType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="PID" />
+    </Key>
+    <Property Name="PID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Project_Group" Relationship="Self.FK_Project_Group_Project" FromRole="Project" ToRole="Project_Group" />
+    <NavigationProperty Name="Teacher_Project" Relationship="Self.FK_Teacher_Project_Project" FromRole="Project" ToRole="Teacher_Project" />
+  </EntityType>
+  <EntityType Name="Project_Group">
+    <Key>
+      <PropertyRef Name="PG_ID" />
+    </Key>
+    <Property Name="PG_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PID" Type="Int32" Nullable="false" />
+    <Property Name="GID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Group" Relationship="Self.FK_Project_Group_Groups" FromRole="Project_Group" ToRole="Groups" />
+    <NavigationProperty Name="Project" Relationship="Self.FK_Project_Group_Project" FromRole="Project_Group" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="Student_Course">
+    <Key>
+      <PropertyRef Name="SC_ID" />
+    </Key>
+    <Property Name="SC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cours" Relationship="Self.FK_Student_Course_Courses" FromRole="Student_Course" ToRole="Courses" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_Student_Course_Students" FromRole="Student_Course" ToRole="Students" />
+  </EntityType>
+  <EntityType Name="Student_Group">
+    <Key>
+      <PropertyRef Name="SG_ID" />
+    </Key>
+    <Property Name="SG_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Group" Relationship="Self.FK_Student_Group_Groups" FromRole="Student_Group" ToRole="Groups" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_Student_Group_Students" FromRole="Student_Group" ToRole="Students" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="SEmailID" />
+    </Key>
+    <Property Name="SEmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Student_Course" Relationship="Self.FK_Student_Course_Students" FromRole="Students" ToRole="Student_Course" />
+    <NavigationProperty Name="Student_Group" Relationship="Self.FK_Student_Group_Students" FromRole="Students" ToRole="Student_Group" />
+  </EntityType>
+  <EntityType Name="Teacher_Course">
+    <Key>
+      <PropertyRef Name="TC_ID" />
+    </Key>
+    <Property Name="TC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cours" Relationship="Self.FK_Teacher_Course_Courses" FromRole="Teacher_Course" ToRole="Courses" />
+    <NavigationProperty Name="Teacher" Relationship="Self.FK_Teacher_Course_Teachers" FromRole="Teacher_Course" ToRole="Teachers" />
+  </EntityType>
+  <EntityType Name="Teacher_Project">
+    <Key>
+      <PropertyRef Name="TP_ID" />
+    </Key>
+    <Property Name="TP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Project" Relationship="Self.FK_Teacher_Project_Project" FromRole="Teacher_Project" ToRole="Project" />
+    <NavigationProperty Name="Teacher" Relationship="Self.FK_Teacher_Project_Teachers" FromRole="Teacher_Project" ToRole="Teachers" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="TEmailID" />
+    </Key>
+    <Property Name="TEmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Teacher_Course" Relationship="Self.FK_Teacher_Course_Teachers" FromRole="Teachers" ToRole="Teacher_Course" />
+    <NavigationProperty Name="Teacher_Project" Relationship="Self.FK_Teacher_Project_Teachers" FromRole="Teachers" ToRole="Teacher_Project" />
+  </EntityType>
+  <Association Name="FK_Student_Course_Courses">
+    <End Role="Courses" Type="Self.Cours" Multiplicity="1" />
+    <End Role="Student_Course" Type="Self.Student_Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="CID" />
+      </Principal>
+      <Dependent Role="Student_Course">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teacher_Course_Courses">
+    <End Role="Courses" Type="Self.Cours" Multiplicity="1" />
+    <End Role="Teacher_Course" Type="Self.Teacher_Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="CID" />
+      </Principal>
+      <Dependent Role="Teacher_Course">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_Group_Groups">
+    <End Role="Groups" Type="Self.Group" Multiplicity="1" />
+    <End Role="Project_Group" Type="Self.Project_Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="GID" />
+      </Principal>
+      <Dependent Role="Project_Group">
+        <PropertyRef Name="GID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Group_Groups">
+    <End Role="Groups" Type="Self.Group" Multiplicity="1" />
+    <End Role="Student_Group" Type="Self.Student_Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="GID" />
+      </Principal>
+      <Dependent Role="Student_Group">
+        <PropertyRef Name="GID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_Group_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="Project_Group" Type="Self.Project_Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="PID" />
+      </Principal>
+      <Dependent Role="Project_Group">
+        <PropertyRef Name="PID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teacher_Project_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="Teacher_Project" Type="Self.Teacher_Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="PID" />
+      </Principal>
+      <Dependent Role="Teacher_Project">
+        <PropertyRef Name="PID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Course_Students">
+    <End Role="Students" Type="Self.Student" Multiplicity="1" />
+    <End Role="Student_Course" Type="Self.Student_Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="SEmailID" />
+      </Principal>
+      <Dependent Role="Student_Course">
+        <PropertyRef Name="SID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Group_Students">
+    <End Role="Students" Type="Self.Student" Multiplicity="1" />
+    <End Role="Student_Group" Type="Self.Student_Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="SEmailID" />
+      </Principal>
+      <Dependent Role="Student_Group">
+        <PropertyRef Name="SID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teacher_Course_Teachers">
+    <End Role="Teachers" Type="Self.Teacher" Multiplicity="1" />
+    <End Role="Teacher_Course" Type="Self.Teacher_Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="TEmailID" />
+      </Principal>
+      <Dependent Role="Teacher_Course">
+        <PropertyRef Name="TID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teacher_Project_Teachers">
+    <End Role="Teachers" Type="Self.Teacher" Multiplicity="1" />
+    <End Role="Teacher_Project" Type="Self.Teacher_Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="TEmailID" />
+      </Principal>
+      <Dependent Role="Teacher_Project">
+        <PropertyRef Name="TID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MC_ProjectAssignerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Courses" EntityType="Self.Cours" />
+    <EntitySet Name="Groups" EntityType="Self.Group" />
+    <EntitySet Name="Notifications" EntityType="Self.Notification" />
+    <EntitySet Name="Projects" EntityType="Self.Project" />
+    <EntitySet Name="Project_Group" EntityType="Self.Project_Group" />
+    <EntitySet Name="Student_Course" EntityType="Self.Student_Course" />
+    <EntitySet Name="Student_Group" EntityType="Self.Student_Group" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="Teacher_Course" EntityType="Self.Teacher_Course" />
+    <EntitySet Name="Teacher_Project" EntityType="Self.Teacher_Project" />
+    <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+    <AssociationSet Name="FK_Student_Course_Courses" Association="Self.FK_Student_Course_Courses">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="Student_Course" EntitySet="Student_Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teacher_Course_Courses" Association="Self.FK_Teacher_Course_Courses">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="Teacher_Course" EntitySet="Teacher_Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_Group_Groups" Association="Self.FK_Project_Group_Groups">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="Project_Group" EntitySet="Project_Group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Group_Groups" Association="Self.FK_Student_Group_Groups">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="Student_Group" EntitySet="Student_Group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_Group_Project" Association="Self.FK_Project_Group_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Project_Group" EntitySet="Project_Group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teacher_Project_Project" Association="Self.FK_Teacher_Project_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Teacher_Project" EntitySet="Teacher_Project" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Course_Students" Association="Self.FK_Student_Course_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Student_Course" EntitySet="Student_Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Group_Students" Association="Self.FK_Student_Group_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Student_Group" EntitySet="Student_Group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teacher_Course_Teachers" Association="Self.FK_Teacher_Course_Teachers">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="Teacher_Course" EntitySet="Teacher_Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teacher_Project_Teachers" Association="Self.FK_Teacher_Project_Teachers">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="Teacher_Project" EntitySet="Teacher_Project" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

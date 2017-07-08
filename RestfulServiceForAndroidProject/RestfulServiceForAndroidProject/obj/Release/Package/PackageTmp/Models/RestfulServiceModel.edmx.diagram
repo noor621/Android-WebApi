@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1f60cac7ac214891b348eb19f8d5844c" Name="Diagram1">
+        <EntityTypeShape EntityType="MC_ProjectAssignerModel.Cours" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MC_ProjectAssignerModel.Group" Width="1.5" PointX="5.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MC_ProjectAssignerModel.Notification" Width="1.5" PointX="2.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MC_ProjectAssignerModel.Project" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MC_ProjectAssignerModel.Project_Group" Width="1.5" PointX="8" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MC_ProjectAssignerModel.Student_Course" Width="1.5" PointX="8" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MC_ProjectAssignerModel.Student_Group" Width="1.5" PointX="8" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MC_ProjectAssignerModel.Student" Width="1.5" PointX="5.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MC_ProjectAssignerModel.Teacher_Course" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MC_ProjectAssignerModel.Teacher_Project" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MC_ProjectAssignerModel.Teacher" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="MC_ProjectAssignerModel.FK_Student_Course_Courses" ManuallyRouted="false" />
+        <AssociationConnector Association="MC_ProjectAssignerModel.FK_Teacher_Course_Courses" ManuallyRouted="false" />
+        <AssociationConnector Association="MC_ProjectAssignerModel.FK_Project_Group_Groups" ManuallyRouted="false" />
+        <AssociationConnector Association="MC_ProjectAssignerModel.FK_Student_Group_Groups" ManuallyRouted="false" />
+        <AssociationConnector Association="MC_ProjectAssignerModel.FK_Project_Group_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="MC_ProjectAssignerModel.FK_Teacher_Project_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="MC_ProjectAssignerModel.FK_Student_Course_Students" ManuallyRouted="false" />
+        <AssociationConnector Association="MC_ProjectAssignerModel.FK_Student_Group_Students" ManuallyRouted="false" />
+        <AssociationConnector Association="MC_ProjectAssignerModel.FK_Teacher_Course_Teachers" ManuallyRouted="false" />
+        <AssociationConnector Association="MC_ProjectAssignerModel.FK_Teacher_Project_Teachers" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

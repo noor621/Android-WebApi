@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MC_ProjectAssignerModelStoreContainer" CdmEntityContainer="MC_ProjectAssignerEntities">
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="MC_ProjectAssignerModel.Cours">
+        <MappingFragment StoreEntitySet="Courses">
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="CName" ColumnName="CName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="MC_ProjectAssignerModel.Group">
+        <MappingFragment StoreEntitySet="Groups">
+          <ScalarProperty Name="GID" ColumnName="GID" />
+          <ScalarProperty Name="GName" ColumnName="GName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notifications">
+      <EntityTypeMapping TypeName="MC_ProjectAssignerModel.Notification">
+        <MappingFragment StoreEntitySet="Notifications">
+          <ScalarProperty Name="NID" ColumnName="NID" />
+          <ScalarProperty Name="NMessage" ColumnName="NMessage" />
+          <ScalarProperty Name="NSenderID" ColumnName="NSenderID" />
+          <ScalarProperty Name="NReceiverID" ColumnName="NReceiverID" />
+          <ScalarProperty Name="NReceiverType" ColumnName="NReceiverType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="MC_ProjectAssignerModel.Project">
+        <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="PID" ColumnName="PID" />
+          <ScalarProperty Name="PTitle" ColumnName="PTitle" />
+          <ScalarProperty Name="PDescription" ColumnName="PDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Project_Group">
+      <EntityTypeMapping TypeName="MC_ProjectAssignerModel.Project_Group">
+        <MappingFragment StoreEntitySet="Project_Group">
+          <ScalarProperty Name="PG_ID" ColumnName="PG_ID" />
+          <ScalarProperty Name="PID" ColumnName="PID" />
+          <ScalarProperty Name="GID" ColumnName="GID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student_Course">
+      <EntityTypeMapping TypeName="MC_ProjectAssignerModel.Student_Course">
+        <MappingFragment StoreEntitySet="Student_Course">
+          <ScalarProperty Name="SC_ID" ColumnName="SC_ID" />
+          <ScalarProperty Name="SID" ColumnName="SID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student_Group">
+      <EntityTypeMapping TypeName="MC_ProjectAssignerModel.Student_Group">
+        <MappingFragment StoreEntitySet="Student_Group">
+          <ScalarProperty Name="SG_ID" ColumnName="SG_ID" />
+          <ScalarProperty Name="SID" ColumnName="SID" />
+          <ScalarProperty Name="GID" ColumnName="GID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="MC_ProjectAssignerModel.Student">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="SEmailID" ColumnName="SEmailID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teacher_Course">
+      <EntityTypeMapping TypeName="MC_ProjectAssignerModel.Teacher_Course">
+        <MappingFragment StoreEntitySet="Teacher_Course">
+          <ScalarProperty Name="TC_ID" ColumnName="TC_ID" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teacher_Project">
+      <EntityTypeMapping TypeName="MC_ProjectAssignerModel.Teacher_Project">
+        <MappingFragment StoreEntitySet="Teacher_Project">
+          <ScalarProperty Name="TP_ID" ColumnName="TP_ID" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="PID" ColumnName="PID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teachers">
+      <EntityTypeMapping TypeName="MC_ProjectAssignerModel.Teacher">
+        <MappingFragment StoreEntitySet="Teachers">
+          <ScalarProperty Name="TEmailID" ColumnName="TEmailID" />
+          <ScalarProperty Name="TPassword" ColumnName="TPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
